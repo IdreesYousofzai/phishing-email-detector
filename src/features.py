@@ -103,6 +103,7 @@ def extract_urls(text: str) -> list:
     return URL_RE.findall(text)
 
 
+
 def analyse_url(url: str) -> dict:
     """Flag a single URL for common phishing patterns."""
     reasons = []
