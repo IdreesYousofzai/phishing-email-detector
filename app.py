@@ -22,6 +22,7 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["GET", "POST"])
+
 def index():
     result = None
     form_data = {"subject": "", "body": "", "display_name": "", "sender_email": ""}
