@@ -61,6 +61,7 @@ URL_RE = re.compile(r"https?://[^\s\"'<>]+|www\.[^\s\"'<>]+")
 IP_URL_RE = re.compile(r"^https?://\d{1,3}(\.\d{1,3}){3}")
 
 
+
 def _contains_any(text: str, phrases) -> list:
     text_l = text.lower()
     return [p for p in phrases if p in text_l]
