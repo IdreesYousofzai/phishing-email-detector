@@ -67,6 +67,7 @@ def _contains_any(text: str, phrases) -> list:
     return [p for p in phrases if p in text_l]
 
 
+
 def check_urgency_language(text: str) -> dict:
     hits = _contains_any(text, URGENT_PHRASES)
     return {
