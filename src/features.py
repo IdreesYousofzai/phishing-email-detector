@@ -97,6 +97,7 @@ def check_money_hooks(text: str) -> dict:
     }
 
 
+
 def extract_urls(text: str) -> list:
     return URL_RE.findall(text)
 
