@@ -7,6 +7,9 @@ through a Flask web app.
 Paste an email in, get a verdict, a confidence percentage, and the exact
 reasons why it was flagged.
 
+<img width="890" height="406" alt="image" src="https://github.com/user-attachments/assets/dbb01fc8-1181-4a82-bdf9-acde5c82138d" />
+
+
 ## Why this matters
 
 Phishing is the entry point for most breaches. Verizon's Data Breach
