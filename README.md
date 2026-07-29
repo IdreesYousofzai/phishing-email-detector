@@ -8,6 +8,7 @@ Paste an email in, get a verdict, a confidence percentage, and the exact
 reasons why it was flagged.
 
 <img width="890" height="406" alt="image" src="https://github.com/user-attachments/assets/dbb01fc8-1181-4a82-bdf9-acde5c82138d" />
+<img width="883" height="403" alt="image" src="https://github.com/user-attachments/assets/406a28e3-785b-4a45-99ad-9458846358ff" />
 
 
 ## Why this matters
