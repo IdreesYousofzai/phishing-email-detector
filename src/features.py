@@ -78,6 +78,7 @@ def check_urgency_language(text: str) -> dict:
     }
 
 
+
 def check_generic_greeting(text: str) -> dict:
     hits = _contains_any(text, GENERIC_GREETINGS)
     return {
