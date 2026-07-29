@@ -88,6 +88,7 @@ def check_generic_greeting(text: str) -> dict:
     }
 
 
+
 def check_money_hooks(text: str) -> dict:
     hits = _contains_any(text, MONEY_HOOKS)
     return {
