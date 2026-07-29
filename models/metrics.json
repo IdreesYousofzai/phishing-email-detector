@@ -1,0 +1,56 @@
+{
+  "results": [
+    {
+      "name": "Naive Bayes",
+      "accuracy": 0.9644,
+      "precision": 0.9533,
+      "recall": 0.9578,
+      "f1": 0.9556,
+      "confusion_matrix": [
+        [
+          930,
+          30
+        ],
+        [
+          27,
+          613
+        ]
+      ]
+    },
+    {
+      "name": "Logistic Regression",
+      "accuracy": 0.9769,
+      "precision": 0.966,
+      "recall": 0.9766,
+      "f1": 0.9713,
+      "confusion_matrix": [
+        [
+          938,
+          22
+        ],
+        [
+          15,
+          625
+        ]
+      ]
+    },
+    {
+      "name": "Random Forest",
+      "accuracy": 0.9631,
+      "precision": 0.9368,
+      "recall": 0.9734,
+      "f1": 0.9548,
+      "confusion_matrix": [
+        [
+          918,
+          42
+        ],
+        [
+          17,
+          623
+        ]
+      ]
+    }
+  ],
+  "best_model": "Logistic Regression"
+}

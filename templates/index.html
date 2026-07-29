@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phishing Email Detector</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="scanline"></div>
+
+<header class="topbar">
+    <div class="topbar-inner">
+        <div class="brand">
+            <span class="brand-mark">&gt;_</span>
+            <span class="brand-name">PHISH<span class="accent">/</span>DETECT</span>
+        </div>
+        <div class="topbar-meta">
+            <span class="dot dot--live"></span>
+            <span>Model: {{ metrics.best_model or "—" }}</span>
+        </div>
+    </div>
+</header>
+
+<main class="layout">
+
+    <section class="panel intake">
+        <div class="panel-head">
+            <h1>Analyse a message</h1>
+            <p>Paste the email content below. Sender fields are optional but sharpen the sender-mismatch check.</p>
+        </div>
+
+        <form method="POST" class="form">
+            <div class="field-row">
+                <div class="field">
+                    <label for="subject">Subject line</label>
+                    <input type="text" id="subject" name="subject" placeholder="e.g. Your account has been suspended" value="{{ form_data.subject }}">
+                </div>
+            </div>
+
+            <div class="field-row two-col">
+                <div class="field">
+                    <label for="display_name">Sender display name <span class="optional">optional</span></label>
+                    <input type="text" id="display_name" name="display_name" placeholder="e.g. PayPal Support" value="{{ form_data.display_name }}">
+                </div>
+                <div class="field">
+                    <label for="sender_email">Sender address <span class="optional">optional</span></label>
+                    <input type="text" id="sender_email" name="sender_email" placeholder="e.g. support@paypa1-secure.net" value="{{ form_data.sender_email }}">
+                </div>
+            </div>
+
+            <div class="field-row">
+                <div class="field">
+                    <label for="body">Email body</label>
+                    <textarea id="body" name="body" rows="12" placeholder="Paste the full email text here..." required>{{ form_data.body }}</textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-analyse">
+                Analyse
+            </button>
+        </form>
+    </section>
+
+    <section class="panel verdict-panel">
+        {% if result %}
+            <div class="verdict-head verdict-head--{{ 'phish' if result.verdict == 'Phishing' else 'safe' }}">
+                <div class="gauge" style="--pct: {{ result.confidence }};">
+                    <div class="gauge-inner">
+                        <span class="gauge-value">{{ result.confidence }}%</span>
+                        <span class="gauge-label">confidence</span>
+                    </div>
+                </div>
+                <div class="verdict-text">
+                    <span class="verdict-eyebrow">Verdict</span>
+                    <h2>{{ result.verdict }}</h2>
+                    <span class="ml-line">ML model estimate: {{ result.ml_probability_phishing }}% phishing probability</span>
+                </div>
+            </div>
+
+            <div class="rule-score">
+                <span>Rule-based signals triggered</span>
+                <div class="score-track">
+                    {% for i in range(result.rule_score_max) %}
+                        <div class="score-cell {{ 'score-cell--on' if i < result.rule_score else '' }}"></div>
+                    {% endfor %}
+                </div>
+                <span class="score-num">{{ result.rule_score }} / {{ result.rule_score_max }}</span>
+            </div>
+
+            <div class="reasons">
+                <h3>What triggered this classification</h3>
+                {% if result.triggered_reasons %}
+                    <ul>
+                        {% for reason in result.triggered_reasons %}
+                        <li>{{ reason }}</li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="no-reasons">No rule-based red flags detected. Verdict is driven by the ML model's word-pattern analysis alone.</p>
+                {% endif %}
+            </div>
+
+            {% if result.suspicious_urls %}
+            <div class="url-list">
+                <h3>URLs found ({{ result.urls_found }})</h3>
+                {% for u in result.suspicious_urls %}
+                <div class="url-item url-item--bad">
+                    <code>{{ u.url }}</code>
+                    <ul>
+                        {% for r in u.reasons %}<li>{{ r }}</li>{% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+        {% else %}
+            <div class="empty-state">
+                <span class="empty-mark">◎</span>
+                <p>Paste an email on the left and click <strong>Analyse</strong> to see the verdict here.</p>
+            </div>
+        {% endif %}
+    </section>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-inner">
+        {% if metrics.results %}
+            <span>Best model: {{ metrics.best_model }} — F1 {{ (metrics.results | selectattr('name','equalto',metrics.best_model) | first)['f1'] }}</span>
+        {% endif %}
+        <span class="footer-sep">·</span>
+        <span>TF-IDF + rule-based hybrid classifier</span>
+    </div>
+</footer>
+
+</body>
+</html>
