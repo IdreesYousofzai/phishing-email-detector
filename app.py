@@ -52,6 +52,7 @@ def index():
 
 @app.route("/api/analyse", methods=["POST"])
 
+
 def api_analyse():
     """JSON API endpoint, in case someone wants to hit this programmatically."""
     data = request.get_json(force=True) or {}
