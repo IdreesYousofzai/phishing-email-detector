@@ -1,15 +1,3 @@
-/* ---------------------------------------------------------------
-   Design tokens
-   Background:  #0A0E13 (near-black navy)
-   Panel:       #111821
-   Border:      #1E2932
-   Text:        #E7ECF1 primary / #7E8DA0 muted
-   Accent safe: #2ED9B8 (teal)
-   Accent bad:  #F2495C (alert red)
-   Accent warn: #F5A623 (amber, rule score)
-   Display face: Space Grotesk | Body: Inter | Data/mono: JetBrains Mono
-----------------------------------------------------------------*/
-
 :root {
     --bg: #0A0E13;
     --panel: #111821;
