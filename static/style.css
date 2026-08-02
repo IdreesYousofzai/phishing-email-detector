@@ -30,7 +30,7 @@ body {
     * { animation: none !important; transition: none !important; }
 }
 
-/* --- ambient scanline, subtle, restrained --- */
+
 .scanline {
     position: fixed;
     top: 0; left: 0; right: 0;
