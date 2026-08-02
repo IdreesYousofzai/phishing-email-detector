@@ -192,7 +192,8 @@ body {
 .btn-analyse:active { transform: scale(0.99); }
 .btn-analyse:focus-visible { outline: 2px solid var(--text); outline-offset: 2px; }
 
-/* --- verdict panel --- */
+
+
 .verdict-panel { min-height: 420px; }
 
 .empty-state {
