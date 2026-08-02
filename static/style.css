@@ -331,7 +331,7 @@ body {
 .url-item ul { margin: 8px 0 0; padding-left: 18px; }
 .url-item li { font-size: 0.8rem; color: var(--text-muted); }
 
-/* --- footer --- */
+
 .footer {
     border-top: 1px solid var(--border);
     padding: 20px 24px;
