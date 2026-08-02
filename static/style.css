@@ -47,7 +47,7 @@ body {
     100% { transform: translateY(100vh); opacity: 0; }
 }
 
-/* --- top bar --- */
+
 .topbar {
     border-bottom: 1px solid var(--border);
     background: rgba(10, 14, 19, 0.9);
