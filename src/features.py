@@ -164,6 +164,7 @@ def check_urls(text: str) -> dict:
     }
 
 
+
 def check_sender_mismatch(display_name: str, sender_email: str) -> dict:
     """Does the display name claim to be a known brand while the actual
     sending domain does not match that brand's real domain?
