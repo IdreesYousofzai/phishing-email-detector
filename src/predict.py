@@ -80,6 +80,7 @@ def analyse_email(subject: str, body: str, display_name: str = "", sender_email:
     }
 
 
+
 if __name__ == "__main__":
     result = analyse_email(
         subject="URGENT: Verify your account now",
