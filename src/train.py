@@ -56,6 +56,7 @@ def load_data():
     return df
 
 
+
 def evaluate(name, model, X_test, y_test):
     start = time.time()
     y_pred = model.predict(X_test)
