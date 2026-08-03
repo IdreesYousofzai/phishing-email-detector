@@ -27,6 +27,7 @@ def _load():
     return _model, _vectorizer
 
 
+
 def analyse_email(subject: str, body: str, display_name: str = "", sender_email: str = "") -> dict:
     """
     Returns a full verdict dictionary:
