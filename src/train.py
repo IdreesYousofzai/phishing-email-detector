@@ -37,6 +37,7 @@ MODELS_DIR = BASE_DIR / "models"
 MODELS_DIR.mkdir(exist_ok=True)
 
 
+
 def load_data():
     df = pd.read_csv(DATA_PATH)
     df["subject"] = df["subject"].fillna("")
