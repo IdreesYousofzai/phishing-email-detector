@@ -189,6 +189,7 @@ def check_sender_mismatch(display_name: str, sender_email: str) -> dict:
     return {"triggered": False, "reason": None}
 
 
+
 def extract_rule_features(subject: str, body: str, display_name: str = "", sender_email: str = "") -> dict:
     """Run every rule check and return a single combined result, including
     a 0-5 'rule score' used as a lightweight signal alongside the ML model."""
